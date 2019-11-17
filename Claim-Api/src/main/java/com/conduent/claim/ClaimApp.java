@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * @author: Paramesh
- * @version:
+ * @version: initial
  * @Since:
  */
 @SpringBootApplication
