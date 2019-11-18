@@ -3,6 +3,7 @@
   <groupId>com.conduent.claim</groupId>
   <artifactId>Claim-Api</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
   <name>NH Claim API</name>
   <description>NH Claim desc</description>
   <parent>
