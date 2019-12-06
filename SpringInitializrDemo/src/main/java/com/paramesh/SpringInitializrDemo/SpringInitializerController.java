@@ -14,6 +14,6 @@ public class SpringInitializerController {
 		
 	@RequestMapping("/springInitializer")
 	public String sayHello(){
-		return "This intialized from Spring Initializer ... !!";
+		return "This intialized from Spring Initializer ... !!!!";
 	}	
 }
