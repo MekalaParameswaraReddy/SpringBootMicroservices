@@ -43,6 +43,15 @@ public class ClaimControll {
 		cliamService.addClaim(claim);
 	}
 	
+	/**
+	 * Compile time error, with only change of RequestMethod.PUT : duplicate method.
+	 * 
+	 */
+	/*@RequestMapping(method= RequestMethod.PUT, value = "/addClaim")
+	public void addClaim(@RequestBody Claim claim){
+		cliamService.addClaim(claim);
+	}*/
+	
 	@RequestMapping(method= RequestMethod.PUT, value = "/updateClaimStatus/{tcnNumber}")
 	public void updateClaimStatus(@PathVariable("tcnNumber") String tcn){
 		cliamService.updateClaimStatus(tcn);
