@@ -1,6 +1,5 @@
 package com.conduent.provider.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.conduent.provider.bean.Provider;
 import com.conduent.provider.bean.ProviderResposeVo;
-import com.conduent.provider.dao.ProviderDAO;
-import com.conduent.provider.dao.impl.ProviderDAOImpl;
 import com.conduent.provider.service.ProviderService;
 
 /**

@@ -19,6 +19,7 @@ public class ProviderDAOImpl implements ProviderDAO {
 
 	
 	public List<Provider> getProviders() {
+		//Jdbc code for DB
 		List<Provider>  list = new ArrayList<> (Arrays.asList(
 				new Provider("1234", "provider1", "ORP"),
 				new Provider("1235", "provider2", "Render"),
