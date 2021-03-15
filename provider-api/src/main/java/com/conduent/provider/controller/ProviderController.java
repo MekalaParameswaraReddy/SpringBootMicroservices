@@ -1,9 +1,10 @@
-package com.conduent.provider;
+package com.conduent.provider.controller;
 
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.conduent.provider.bean.Provider;
+import com.conduent.provider.bean.ProviderResposeVo;
 import com.conduent.provider.dao.ProviderDAO;
-import com.conduent.provider.dao.ProviderDAOImpl;
+import com.conduent.provider.dao.impl.ProviderDAOImpl;
+import com.conduent.provider.service.ProviderService;
 
 /**
  * @author: Paramesh
@@ -20,22 +23,24 @@ import com.conduent.provider.dao.ProviderDAOImpl;
  * @Since:
  */
 @RestController
+@RequestMapping("/provider")
 public class ProviderController {
 
 	@Autowired
 	private ProviderService providerService;
-
+	
+	/**
+	 * if we not specify method = RequestMethod.GET, it will accept any
+	 * kind of request. like get, post, put, delete.......
+	 */
 	@RequestMapping("/hello")
+	//@RequestMapping(method = RequestMethod.GET, value = "/hello")
 	public String getName() {
 		return "Prameswara";
 	}
 
 	@RequestMapping("/providers")
-	public List<Provider> getProviders() {
-		//Below two lines are actual implimetantion.
-		ProviderDAO providerDAO = new ProviderDAOImpl();
-		providerDAO.getProviders();
-		
+	public ResponseEntity<ProviderResposeVo> getProviders() {
 		return providerService.getProviders();
 	}
 

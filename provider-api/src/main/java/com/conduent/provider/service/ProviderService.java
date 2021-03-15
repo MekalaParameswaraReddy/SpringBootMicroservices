@@ -1,12 +1,18 @@
-package com.conduent.provider;
+package com.conduent.provider.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.conduent.provider.bean.Provider;
+import com.conduent.provider.bean.ProviderResposeVo;
+import com.conduent.provider.dao.ProviderDAO;
 
 /**
  * @author: Paramesh
@@ -15,6 +21,10 @@ import com.conduent.provider.bean.Provider;
  */
 @Service
 public class ProviderService {
+	
+	@Autowired
+	@Qualifier("providerDAOImpl")
+	ProviderDAO providerDAO;
 
 	List<Provider>  list = new ArrayList<> (Arrays.asList(
 			new Provider("1234", "provider1", "ORP"),
@@ -22,9 +32,18 @@ public class ProviderService {
 			new Provider("1236", "provider3", "Billing"),
 			new Provider("1237", "provider4", "non - Billing")));
 	
-	public List<Provider> getProviders(){
-		
-		return list;
+	public ResponseEntity<ProviderResposeVo> getProviders(){		
+		List list =  providerDAO.getProviders();
+		ProviderResposeVo providerResposeVo = new ProviderResposeVo();
+		if(list == null|| list.size()==0) {
+			providerResposeVo.setStatus("Failure");
+			providerResposeVo.setList(list);
+			return new  ResponseEntity<ProviderResposeVo>(providerResposeVo, HttpStatus.BAD_REQUEST);
+		} else {
+			providerResposeVo.setStatus("Success");
+			providerResposeVo.setList(list);
+			return new ResponseEntity<ProviderResposeVo>(providerResposeVo, HttpStatus.OK);
+		}
 	}
 	
 	public Provider getProvider(String id){
