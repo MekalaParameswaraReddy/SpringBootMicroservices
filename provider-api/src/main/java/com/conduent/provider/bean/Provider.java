@@ -1,13 +1,26 @@
 package com.conduent.provider.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * @author: Paramesh
  * @version:
  * @Since:
  */
+@Entity
+@Table(name = "provider")
 public class Provider {
+	
+	@Id
 	String id;
+	
+	@Column(name = "name")
 	String name;
+	
+	@Column(name = "type")
 	String type;
 	
 	public Provider () {

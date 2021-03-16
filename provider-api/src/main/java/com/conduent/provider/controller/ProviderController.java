@@ -36,7 +36,7 @@ public class ProviderController {
 		return "Prameswara";
 	}
 
-	@RequestMapping("/providers")
+	@RequestMapping("/getAllProviders")
 	public ResponseEntity<ProviderResposeVo> getProviders() {
 		return providerService.getProviders();
 	}
