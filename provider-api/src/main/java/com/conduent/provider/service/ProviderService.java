@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.conduent.provider.bean.Provider;
 import com.conduent.provider.bean.ProviderResposeVo;
+import com.conduent.provider.constants.ProviderConstants;
 import com.conduent.provider.dao.ProviderDAO;
 
 /**
@@ -25,6 +26,9 @@ public class ProviderService {
 	@Autowired
 	@Qualifier("providerDAOImpl")
 	ProviderDAO providerDAO;
+	
+	@Autowired
+	ProviderConstants providerConstants;
 
 	List<Provider>  list = new ArrayList<> (Arrays.asList(
 			new Provider("1234", "provider1", "ORP"),
@@ -36,11 +40,11 @@ public class ProviderService {
 		List list =  providerDAO.getProviders();
 		ProviderResposeVo providerResposeVo = new ProviderResposeVo();
 		if(list == null|| list.size()==0) {
-			providerResposeVo.setStatus("Failure");
+			providerResposeVo.setStatus(providerConstants.failMsg);
 			providerResposeVo.setList(list);
 			return new  ResponseEntity<ProviderResposeVo>(providerResposeVo, HttpStatus.BAD_REQUEST);
 		} else {
-			providerResposeVo.setStatus("Success");
+			providerResposeVo.setStatus(providerConstants.successMsg);
 			providerResposeVo.setList(list);
 			return new ResponseEntity<ProviderResposeVo>(providerResposeVo, HttpStatus.OK);
 		}
