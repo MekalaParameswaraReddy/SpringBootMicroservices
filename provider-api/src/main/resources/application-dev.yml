@@ -1,0 +1,10 @@
+spring:
+    config:
+        activate:
+            on-profile: dev
+name: dev-YAML
+environment: testing
+enabled: false
+servers: 
+    - www.abc.dev.com
+    - www.xyz.dev.com
