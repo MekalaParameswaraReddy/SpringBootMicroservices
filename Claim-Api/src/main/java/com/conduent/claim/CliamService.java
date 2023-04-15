@@ -23,7 +23,7 @@ import com.conduent.claim.bean.Provider;
 @Service
 public class CliamService {
 	
-	// RestTemplate object created only once, at the time of loding the ClaimApp
+	// RestTemplate object created only once, at the time of loading the ClaimApp
 	/* RestTemplate restTemplate = new RestTemplate(); for each request one new object will crate. */
 	@Autowired
 	public  RestTemplate restTemplate;
@@ -72,10 +72,10 @@ public class CliamService {
 			System.out.println("memberResponse == " + memberResponse);
 			member = restTemplate.getForObject("http://localhost:2021/getMember/123A1", Member.class);
 		}		
-		ResponseEntity<Provider> providerResponse = restTemplate.getForEntity("http://localhost:2022/getProvider/1234", Provider.class);
+		ResponseEntity<Provider> providerResponse = restTemplate.getForEntity("http://localhost:2022/provider/getProvider/1234", Provider.class);
 		if(providerResponse.getStatusCode().equals(HttpStatus.OK)){
 			System.out.println("providerResponse === " + providerResponse);
-			provider =  restTemplate.getForObject("http://localhost:2022/getProvider/1234", Provider.class);
+			provider =  restTemplate.getForObject("http://localhost:2022/provider/getProvider/1234", Provider.class);
 		}
 		
 		//Claim claim1 = new Claim("9123456789001", "institunal" , "suspense");
