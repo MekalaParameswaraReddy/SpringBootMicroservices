@@ -38,7 +38,7 @@ public class CliamService {
 		return list;
 	}
 	
-	public Claim getClaimByTcn(String tcn){
+	private Claim getClaimByTcn(String tcn){
 		return list.stream().filter(x -> x.getTcn().equals(tcn)).findFirst().get();		
 	}
 	

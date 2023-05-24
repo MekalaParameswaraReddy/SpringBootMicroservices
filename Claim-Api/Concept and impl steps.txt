@@ -1,3 +1,38 @@
 Application Runner
 Command Line Runner
 	Application Runner and Command Line Runner interfaces lets you to execute the code after the Spring Boot application is started.
+	
+Claims API	
+1) curl http://localhost:2020/getClaims
+2) curl http://localhost:2020/getClaim/123456789001
+3) curl --request "DELETE"	http://localhost:2020/deleteClaimByTcn/123456789002
+4) curl --request PUT http://localhost:2020/updateClaimStatus/123456789019
+5) http://localhost:2020/getClaimsFulldataByTcn/123456789020 (subsystems need to up & run)
+6) curl --location 'http://localhost:2020/addClaim' \
+--header 'Content-Type: application/json' \
+--data '{
+    "tcn": "123456789020",
+    "claimType": "dental",
+    "status": "suspend20",
+    "member": null,
+    "provider": null
+}'
+
+//ToDo : not proper format
+curl --request POST http://localhost:2020/addClaim -d '{"tcn": "123456789020", "claimType": "dental", "status": "paid", "member": null, "provider": null}'
+
+
+
+
+//ToDO
+Changing response type
+Keep the end points in application.properties file
+return type (bad request, internal server error)
+In memory DB
+Routes
+Reactive program
+
+
+Branch & commits
+	Development
+		
